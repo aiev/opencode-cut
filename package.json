@@ -1,0 +1,58 @@
+{
+  "name": "opencode-cut",
+  "version": "0.1.0",
+  "description": "OpenCode V2 TUI plugin that adds real clipboard-aware cut support to text inputs",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    "./tui": {
+      "types": "./dist/tui.d.ts",
+      "import": "./tui/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "tui",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "tui",
+    "clipboard",
+    "cut"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aiev/opencode-cut.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiev/opencode-cut/issues"
+  },
+  "homepage": "https://github.com/aiev/opencode-cut#readme",
+  "author": "aiev",
+  "license": "MIT",
+  "dependencies": {
+    "clipboardy": "^5.3.2"
+  },
+  "peerDependencies": {
+    "@opentui/core": ">=0.5.10"
+  },
+  "devDependencies": {
+    "@opencode/plugin": "^2.0.16",
+    "@opentui/core": "^0.5.10",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.22.3",
+    "typescript": "^5.8.0"
+  }
+}

@@ -18,7 +18,9 @@ const mod: Plugin.Definition = {
       render: () => {
         context.keymap.layer(() => ({
           mode: "global",
-          target: () => context.renderer.currentFocusedEditor,
+          // The renderer's focus getter is not reactive. A target accessor would
+          // pin this layer to the editor (or null) present when the app mounts.
+          // Resolve the focused editor in enabled/run instead.
           priority: 100,
           commands: [
             {
